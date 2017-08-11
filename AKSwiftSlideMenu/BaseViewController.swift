@@ -93,6 +93,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
             sender.tag = 0;
             
             let viewMenuBack : UIView = view.subviews.last!
+            let childVC = self.childViewControllers.first as! MenuViewController
             
             UIView.animate(withDuration: 0.3, animations: { () -> Void in
                 var frameMenu : CGRect = viewMenuBack.frame
@@ -102,6 +103,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
                 viewMenuBack.backgroundColor = UIColor.clear
                 }, completion: { (finished) -> Void in
                     viewMenuBack.removeFromSuperview()
+                    childVC.removeFromParentViewController()
             })
             
             return
